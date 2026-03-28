@@ -10,7 +10,7 @@ const PORT = 5000;
 app.use(express.json());
 app.use(cors());
 
-// Basic sanity check route
+// Basic route check
 app.get("/", (req, res) => {
   res.send("Netflix Clone API Running");
 });
@@ -19,7 +19,6 @@ app.get("/", (req, res) => {
 app.get("/api/movies/trending", async (req, res) => {
   try {
     const response = await fetch(trendingUrl);
-    // FIXED: missing await here
     const data = await response.json();
     res.json(data);
   } catch (error) {
